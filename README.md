@@ -15,16 +15,15 @@ As an undergrad getting my hands dirty with ML, I broke the project down into a 
 - **Testing it Out:** I took a new test image, extracted its colors, and asked my trained model to drop it into the closest matching group.
 
 📊 **What I Found**
-(Note: Be sure to replace the placeholder links below with your actual image paths before pushing to GitHub!)
 
 - **Face Detection Works:** The Haar Cascade tool did a great job finding faces once I tweaked the settings to ignore background noise.
-  ![Face Detection Output](./images/face_detection.png)
+  ![Face Detection Output](./Total%20number%20of%20face%20detected%20are%2030_screenshot_15.02.2026.png)
 
 - **Clear Groups:** Plotting the colors showed two neat groups (Cluster 0 in green, Cluster 1 in blue) based on skin tone and lighting differences.
-  ![Scatter Plot of Clusters](./images/scatter_clusters.png)
+  ![Scatter Plot of Clusters](./Dr%20Shashi%20Tharoor%20Lab%205.jpg)
 
 - **Successful Test:** The model easily matched the new test image to the correct group based on how close its colors were to the cluster centers!
-  ![Final Classification with Template](./images/final_classification.png)
+  ![Final Classification with Template](./Template%20Face_screenshot_15.02.2026.png)
 
 💡 **My Takeaway**
 K-Means is super handy for grouping data when you don't have labels to start with. But, I quickly realized that the magic really depends on the features you pick. Hue and saturation worked nicely for this lab, but for tougher real-world tasks, we'd need more advanced data.
