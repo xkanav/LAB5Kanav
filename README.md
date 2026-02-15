@@ -1,43 +1,32 @@
-# MLPR Assignment Repository
+# MLPR Lab 5: Grouping Faces with K-Means
+Author: Kanav Nanda
 
-Repository contents:
-- Completed Jupyter notebooks: `asg1.ipynb`, `asg2.ipynb`, `asg3.ipynb`, `Lab 4 Spring 2026 AI3011.ipynb`, `Lab 5 Spring 2026.ipynb`
-- Supporting images used in analysis.
+Course: Machine Learning and Pattern Recognition (Spring 2026)
 
-## Aim
-Summarise aims of the assignment: explore image processing and machine learning techniques applied in the course labs and assignments, perform data exploration, preprocessing, modeling, and report results and conclusions.
+🎯 **What's the Goal?**
+The plan for this lab was simple: spot faces in a group photo, figure out their colors (hue and saturation), and group them together using a cool machine learning algorithm called K-Means Clustering. Finally, I tested the model by throwing in a brand-new picture to see which group it fit into best!
 
-## Methodology
-- Exploratory data analysis and visualization using pandas and plotly/matplotlib.
-- Preprocessing steps and feature extraction shown inside each notebook (e.g., image normalization, Haar cascade face detection where used).
-- Models and algorithms (as implemented in notebooks) were trained and evaluated; please open the notebooks to see code, outputs and answers to report questions.
+🛠️ **How I Did It**
+As an undergrad getting my hands dirty with ML, I broke the project down into a few easy steps:
 
-## Key findings and conclusions
-- Notebooks contain the analysis, results, visualizations and short conclusions for each lab/assignment.
-- Visual artifacts used in the report (examples):
+- **Finding Faces:** I used OpenCV's Haar Cascade tool to scan the group photo and draw boxes around everyone's faces.
+- **Grabbing Colors:** Regular RGB colors are tricky when lighting changes, so I switched to the HSV (Hue, Saturation, Value) format. I just pulled out the average Hue and Saturation for every face.
+- **Clustering (The ML Part):** I asked the K-Means algorithm to split these faces into 2 distinct groups based on their color features.
+- **Testing it Out:** I took a new test image, extracted its colors, and asked my trained model to drop it into the closest matching group.
 
-![Lab 3 Satellite Image](Lab 3 Sat Image.jpg)
+📊 **What I Found**
+(Note: Be sure to replace the placeholder links below with your actual image paths before pushing to GitHub!)
 
-![Detected Faces Example](Total number of face detected are 30_screenshot_15.02.2026.png)
+- **Face Detection Works:** The Haar Cascade tool did a great job finding faces once I tweaked the settings to ignore background noise.
+  ![Face Detection Output](./images/face_detection.png)
 
-## How to create a public GitHub repository and push these files
-1. Create a new public repository on GitHub named e.g. `mlpr-assignment`.
-2. In your local workspace (/Users/kanavnanda/Downloads/mlpr) run the following (or use GitHub CLI):
+- **Clear Groups:** Plotting the colors showed two neat groups (Cluster 0 in green, Cluster 1 in blue) based on skin tone and lighting differences.
+  ![Scatter Plot of Clusters](./images/scatter_clusters.png)
 
-- Add a remote and push the existing commits to GitHub.
+- **Successful Test:** The model easily matched the new test image to the correct group based on how close its colors were to the cluster centers!
+  ![Final Classification with Template](./images/final_classification.png)
 
-3. Verify the repository is public by visiting the GitHub URL.
+💡 **My Takeaway**
+K-Means is super handy for grouping data when you don't have labels to start with. But, I quickly realized that the magic really depends on the features you pick. Hue and saturation worked nicely for this lab, but for tougher real-world tasks, we'd need more advanced data.
 
-Note: All notebooks already include code, outputs, analysis and answers. Open each `.ipynb` file in Jupyter or VS Code to review.
-
-## Files
-- asg1.ipynb
-- asg2.ipynb
-- asg3.ipynb
-- Lab 4 Spring 2026 AI3011.ipynb
-- Lab 5 Spring 2026.ipynb
-
-
----
-
-If you want, I can attempt to create the remote GitHub repository and push (this requires that the GitHub CLI is installed and you are authenticated), or provide the exact commands to run in the terminal. Let me know which you prefer.
+Also, picking the right number of groups (the "K" value) is super important. If K is too high or too low, the model might overthink the noise or miss the big picture.
